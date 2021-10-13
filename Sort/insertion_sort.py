@@ -20,7 +20,8 @@ def insertion_sort(numbers):
             numbers[j+1] = numbers[j]
             j -= 1
     
-    numbers[j+1] = tmp
+        numbers[j+1] = tmp
+        
     return(numbers)
 
 print(insertion_sort([random.randint(0,100) for _ in range(10)]))
