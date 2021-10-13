@@ -27,7 +27,7 @@ def insertion_sort(numbers):
 print(insertion_sort([random.randint(0,100) for _ in range(10)]))
 
 #ここから自分用############################
-#sort関数でソートした結果と、自作bubble_sortの結果を比較するcheck関数
+#sort関数でソートした結果と、自作insertion_sortの結果を比較するcheck関数
 
 def check(numbers):
     insertionsort = insertion_sort(numbers)
