@@ -34,7 +34,7 @@ def gnome_sort(numbers):
 print(gnome_sort([random.randint(0,100) for _ in range(10)]))
 
 #ここから自分用############################
-#sort関数でソートした結果と、自作bubble_sortの結果を比較するcheck関数
+#sort関数でソートした結果と、自作gnome_sortの結果を比較するcheck関数
 
 def check(numbers):
     gnomesort = gnome_sort(numbers)
