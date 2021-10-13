@@ -55,7 +55,7 @@ nums = [1,4,5,7,8,3,5,8]
 print(cocktail_sort(nums))
 
 #ここから自分用############################
-#sort関数でソートした結果と、自作bubble_sortの結果を比較するcheck関数
+#sort関数でソートした結果と、自作cocktail_sortの結果を比較するcheck関数
 
 def check(numbers):
     cocktailsort = cocktail_sort(numbers)
