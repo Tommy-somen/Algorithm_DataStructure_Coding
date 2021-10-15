@@ -110,6 +110,57 @@ class LinkedList():
         current_node = None
 
 
+    #LinkedListを逆方向にするreverse関数の作成
+    def reverse_iterative(self):
+
+        #1つ前のノードを格納するprevious_node(最初のcurrent_nodeはheadからなのでNone)
+        previous_node = None
+        #現在ノードcurrent_nodeにheadを入れる
+        current_node = self.head
+
+        #whileで先頭から走査して、nextポインタを入れ替える
+        while current_node:
+            #走査するcurrent_nodeの行先をnext_nodeに入れておく
+            next_node = current_node.next
+            #current_nodeの行先を1つ前のノードに更新する
+            current_node.next = previous_node
+            #逆に並び替える作業はこれまで
+            
+            #次の走査に進むために変数の調整をする
+            #1.previous_nodeを現在ノードに更新
+            previous_node = current_node
+            #2.current_nodeを次の地点next_nodeに更新
+            current_node = next_node
+
+        #最後にheadを一番最後のノードに塗り替えるため、previous_nodeで更新する
+        self.head = previous_node
+
+
+    #reverse関数を再帰関数で実装(内部処理はほとんど同じ。異なる点でコメントアウト)
+    def reverse_recursive(self):
+
+        #内部関数を作成
+        def _reverse_recursive(current_node, previous_node):
+
+            #再帰関数の終着点として、current_nodeがNone(=最後まで見終わってる時)
+            if current_node is None:
+                #previou_nodeを戻り値として返す
+                #>>そうすると、LikedListの中身は入れ替わり、previous_nodeが先頭にreturnする
+                return previous_node
+
+            next_node = current_node.next
+            current_node.next = previous_node
+
+            previous_node = current_node
+            current_node = next_node
+
+            return _reverse_recursive(current_node, previous_node)
+
+        #最後のprevious_nodeが帰ってきて、headとしてインプットされる
+        self.head = _reverse_recursive(self.head, None)
+
+
+
 #上記のクラスを呼び出して試してみる
 if __name__ == "__main__":
     #LinkedListを作成
@@ -128,3 +179,7 @@ if __name__ == "__main__":
     print("###############")
     linkedlist.remove(2)
     linkedlist.print() #>>2が削除され、1 -> 3となっている
+    
+    print("$$$$$$$$$$$$$$$$$")
+    linkedlist.reverse_iterative()
+    linkedlist.print()
