@@ -158,6 +158,41 @@ class LinkedList():
 
         #最後のprevious_nodeが帰ってきて、headとしてインプットされる
         self.head = _reverse_recursive(self.head, None)
+        
+        
+  #interview_quiz ... 偶数だけリバースする関数を作成する。
+    def reverse_recursive_even(self):
+
+        def _reverse_recursive_even(head, previous_node):
+
+            if head is None:
+                return None
+
+            current_node = head
+
+            while current_node and current_node.data%2 == 0:
+                next_node = current_node.next
+                current_node.next = previous_node
+
+                previous_node = current_node
+                current_node = next_node
+
+
+            #偶数処理によりcurrent_nodeが先に進み、head != current_nodeの時
+            if current_node != head:
+                head.next = current_node
+                _reverse_recursive_even(current_node, None)
+                #順当に進めば最後の数字がheadになる
+                return previous_node
+    
+            #偶数処理をしない時
+            else:
+                #head.nextを再帰的に探索する(偶数であれば最後の偶数が、奇数なら奇数が帰る)
+                head.next = _reverse_recursive_even(head.next, head)
+                #奇数のものはそのまま返してあげる
+                return head
+
+        self.head = _reverse_recursive_even(self.head, None)
 
 
 
