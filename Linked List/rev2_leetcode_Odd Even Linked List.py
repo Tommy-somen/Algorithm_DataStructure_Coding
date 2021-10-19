@@ -1,3 +1,6 @@
+#rev0 --> rev2
+#speed/ 1500ms --> 77ms
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
